@@ -1,0 +1,45 @@
+<%= form_with(model: pin) do |form| %>
+  <% if pin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pin.errors.count, "error") %> prohibited this pin from being saved:</h2>
+
+      <ul>
+        <% pin.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  </div>
+  <div class="form" style="margin-left:30px;margin-right: 30px;" >
+    <br>
+  <div class="field input-group">
+    <span class="input-group-text"> User Id </span>
+    <%= form.text_field :title, class:"form-control", value: current_user.name %>
+  </div>
+  <br>
+
+
+  <div class="field input-group mb-3">
+    <%= form.label :upload, class:"input-group-text"%>
+    <%= form.file_field :image, class:"form-control" %>
+  </div>
+  <br>
+
+  <div class="field input-group">
+    <span class="input-group-text">Caption </span>
+    <%= form.text_area :caption, class:"form-control", placeholder:"tell something about post"%>
+  </div>
+  <br>
+  <div class="field input-group">
+    <span class="input-group-text">User_id </span>
+    <%= form.text_area :user_id, id: :pin_user_id, class:"form-control", value:current_user.id %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= form.submit :post, class:"btn btn-dark" %> || <%= link_to 'Back', pins_path, class:"btn btn-secondary" %>
+  </div>
+</div>
+<% end %>

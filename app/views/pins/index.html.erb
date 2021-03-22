@@ -1,0 +1,29 @@
+   
+
+
+
+    <% if user_signed_in? %>
+    <% @pins.each do |pin| %>
+
+    <table class="table table-dark table-striped">
+      <tr><td><%= pin.title %></td><td> 
+
+       
+          <div class="dropdown">
+            <div class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false"> To edit </div>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="background-color: black;">
+                <li><%= link_to 'Edit', edit_pin_path(pin), class:"navbar-brand" %></li>
+                <li><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' }, class:"navbar-brand" %></li>
+              </ul>
+            </div>
+          
+      </td></tr>
+      <tr><td><%= image_tag (pin.image), style:"width:500px; height:500px"%></td><td></td></tr>
+      <tr><td><%= pin.caption %></td><td></td></tr>
+    </table>
+    <% end %>
+    <% else %>  
+        <p style="margin-left: 370px; margin-top: 300px;">Please Log in to account <%= link_to 'Sign in', new_user_session_path,:class=>"btn btn-primary btn-sm"%> or <%= link_to 'Sign up', new_user_registration_path , class:"btn btn-primary btn-sm" %>
+    <% end %>
+
+
